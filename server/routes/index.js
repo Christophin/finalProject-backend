@@ -1,5 +1,6 @@
 const UserController = require('../controllers/user');
 const ClipartController = require('../controllers/clipart');
+const TshirtController = require('../controllers/tshirt');
 const middleware = require('../middleware');
 
 module.exports = (app) => {
@@ -15,4 +16,6 @@ module.exports = (app) => {
 
     app.get('/cliparts', ClipartController.getCliparts);
     app.post('/cliparts', ClipartController.newClipart);
+
+    app.post('/tshirt', middleware.authenticate, TshirtController.newTshirt)
 };

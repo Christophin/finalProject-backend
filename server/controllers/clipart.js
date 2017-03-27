@@ -1,5 +1,6 @@
 'use strict';
 const Clipart = require('../models').Clipart;
+
 module.exports = {
     getCliparts(req, res)    {
         Clipart.findAll().then(cliparts => res.status(201).send(cliparts))
