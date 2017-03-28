@@ -25,5 +25,23 @@ module.exports = {
         })
             .then(tshirt => res.status(201).send(tshirt))
             .catch(error => res.status(400).send(error));
+    },
+    getTshirts (req, res)   {
+      Tshirt.findAll({
+          include: [
+              { model: TsFrontImage,
+                as: 'tsFrontImages'
+              }, {
+                model: TsBackImage,
+                as: 'tsBackImages'
+              }
+          ],
+          where:    {
+              user_id: req.user.id
+          }
+      })
+          .then(tshirts => res.status(201).send(tshirts))
+          .catch(error => res.status(400).send(error));
+
     }
 };

@@ -17,5 +17,6 @@ module.exports = (app) => {
     app.get('/cliparts', ClipartController.getCliparts);
     app.post('/cliparts', ClipartController.newClipart);
 
-    app.post('/tshirt', middleware.authenticate, TshirtController.newTshirt)
+    app.post('/tshirt', middleware.authenticate, TshirtController.newTshirt);
+    app.get('/tshirt', middleware.authenticate, TshirtController.getTshirts);
 };
