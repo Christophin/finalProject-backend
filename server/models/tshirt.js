@@ -9,7 +9,14 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Tshirt.hasMany(models.TsFrontImage, {
+          foreignKey: 'tshirt_id',
+          as: 'tsFrontImages'
+        });
+        Tshirt.hasMany(models.TsBackImage, {
+          foreignKey: 'tshirt_id',
+          as: 'tsBackImages'
+        });
       }
     }
   });
