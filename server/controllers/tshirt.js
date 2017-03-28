@@ -6,7 +6,6 @@ const TsBackImage = require('../models').TsBackImage;
 
 module.exports = {
     newTshirt (req, res)    {
-        console.log(req.body);
         Tshirt.create({
             name: req.body.name,
             user_id: req.user.id,

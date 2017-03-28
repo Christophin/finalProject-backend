@@ -4,7 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     tshirt_id: DataTypes.STRING,
     url: DataTypes.STRING,
     x_position: DataTypes.INTEGER,
-    y_position: DataTypes.INTEGER
+    y_position: DataTypes.INTEGER,
+    width: DataTypes.INTEGER,
+    height: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {

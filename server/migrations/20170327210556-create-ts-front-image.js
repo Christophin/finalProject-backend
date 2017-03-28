@@ -24,6 +24,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      width:  {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      height: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
