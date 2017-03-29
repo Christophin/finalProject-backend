@@ -19,4 +19,5 @@ module.exports = (app) => {
 
     app.post('/tshirt', middleware.authenticate, TshirtController.newTshirt);
     app.get('/tshirt', middleware.authenticate, TshirtController.getTshirts);
+    app.put('/tshirt/:id', middleware.authenticate, TshirtController.updateTshirt)
 };

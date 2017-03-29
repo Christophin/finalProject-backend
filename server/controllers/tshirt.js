@@ -12,8 +12,8 @@ module.exports = {
             color: req.body.color,
             ts_front_url: req.body.ts_front_url,
             ts_back_url: req.body.ts_back_url,
-            tsFrontImages:   req.body.front_images,
-            tsBackImages:    req.body.back_images
+            tsFrontImages:   req.body.tsFrontImages,
+            tsBackImages:    req.body.tsBackImages
         }, {
             include: [{
                 model: TsFrontImage,
@@ -43,5 +43,32 @@ module.exports = {
           .then(tshirts => res.status(201).send(tshirts))
           .catch(error => res.status(400).send(error));
 
+    },
+    updateTshirt (req, res) {
+        Tshirt.findById(req.params.id, {
+            include: [
+                { model: TsFrontImage,
+                    as: 'tsFrontImages'
+                }, {
+                    model: TsBackImage,
+                    as: 'tsBackImages'
+                }
+            ]
+        })
+            .then(tshirt => {
+                tshirt.update(req.body, {
+                    include:    [
+                        { model: TsFrontImage,
+                            as: 'tsFrontImages'
+                        }, {
+                            model: TsBackImage,
+                            as: 'tsBackImages'
+                        }
+                    ],
+                    fields: ['name','color','ts_front_url','ts_back_url',"tsFrontImages",'tsBackImages' ]
+                })
+                    .then(tshirt => res.status(201).send(tshirt))
+                    .catch(error => res.status(400).send(error));
+            })
     }
 };
