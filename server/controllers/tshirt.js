@@ -40,7 +40,7 @@ module.exports = {
               user_id: req.user.id
           }
       })
-          .then(tshirts => res.status(201).send(tshirts))
+          .then(tshirts => res.status(200).send(tshirts))
           .catch(error => res.status(400).send(error));
 
     },
