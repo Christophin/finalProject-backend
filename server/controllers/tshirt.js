@@ -41,7 +41,19 @@ module.exports = {
           }
       })
           .then(tshirts => res.status(200).send(tshirts))
-          .catch(error => res.status(400).send(error));
+          .catch(error => {
+              console.log(req.user);
+              res.status(400).send(error)
+          });
+
+    },
+    getTshirtTest (req, res)   {
+        Tshirt.findAll({})
+            .then(tshirts => res.status(200).send(tshirts))
+            .catch(error => {
+                console.log(req.user);
+                res.status(400).send(error)
+            });
 
     },
     updateTshirt (req, res) {
