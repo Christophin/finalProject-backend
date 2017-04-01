@@ -20,6 +20,8 @@ module.exports = {
                     });
                 }
                 req.user = user;
+                console.log(req);
+                console.log(typeof req.user.id);
                 next();
             })
         } catch (error) {

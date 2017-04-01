@@ -5,8 +5,9 @@ const appSecrets = require ('../config/secrets');
 
 module.exports = {
     getUsers (req, res) {
-        User.findAll().then(users => res.status(201).send(users))
-    .catch(error => res.status(401).send(error));
+        User.findAll()
+            .then(users => res.status(201).send(users))
+            .catch(error => res.status(401).send(error));
     },
     register (req, res) {
         let salt = bcrypt.genSaltSync(10);
@@ -17,7 +18,7 @@ module.exports = {
             salt: salt,
         })
             .then(user => res.status(201).send(user))
-    .catch(error => res.status(400).send(error));
+            .catch(error => res.status(400).send(error));
     },
     login (req, res)    {
         User.findOne({
