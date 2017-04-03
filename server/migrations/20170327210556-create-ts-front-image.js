@@ -13,23 +13,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       url: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       x_position: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       y_position: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       width:  {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       height: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
