@@ -90,7 +90,7 @@ module.exports = {
     tossShirt(req, res) {
         ShopifyUser.findOne({
             where: {
-                token: req.headers.access_token
+                user_id: req.user.id
             }
         })
             .then(user => {
