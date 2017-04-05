@@ -94,6 +94,7 @@ module.exports = {
             }
         })
             .then(user => {
+                console.log("after promise req", req);
                 let shop = user.shop_name;
                 let url = `https://${shop}.myshopify.com/admin/products.json`;
                 let header = user.token;
