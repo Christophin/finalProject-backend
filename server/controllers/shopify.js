@@ -60,27 +60,23 @@ module.exports = {
             method: "POST",
             body: req.body,
             json: true
-        }, function(error, resp, body)  {
-                console.log(resp.body);
-                res.status(200).send(resp)
         })
-        // make a POST request to shopify for access token
-        // then save access token into database for shopify user
-        ShopifyUser.findOne({
-            where:  {
-                nonce: nonce
-            }
+        .then(resp => {
+            ShopifyUser.findOne({
+                where: {
+                    nonce: nonce
+                }
+            })
+            .then(user => {
+                user.update({
+                    token: resp.body.access_token
+                })
+                .then(user => {
+                    console.log(user);
+                    res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
+                })
+            })
         })
-            // .then(user =>   {
-            //     user.update(req.query.authorization_code, {
-            //
-            //      })
-            // })
-            .catch(error => res.status(400).send(error))
+        .catch(error => res.status(400).send(error))
     }
 };
-
-
-// user.update(req.query.authorization_code, {
-//
-// })
