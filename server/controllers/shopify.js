@@ -86,5 +86,16 @@ module.exports = {
         })
             .then(user => res.status(200).send(user))
             .catch(error => res.status(400).send(error))
+    },
+    tossShirt(req, res) {
+        ShopifyUser.findOne({
+            where: {
+                token: req.headers.access_token
+            }
+        })
+            .then(user => {
+                console.log(user);
+                console.log(req.body);
+            })
     }
 };
