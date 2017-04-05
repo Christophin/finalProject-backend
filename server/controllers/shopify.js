@@ -100,10 +100,10 @@ module.exports = {
                 let imgUrl = req.body.imageUrl;
                 let title = req.body.title;
                 let data = {
-                    "product": {
-                        "title": title,
-                        "images": [
-                            {"src": imgUrl}
+                    product: {
+                        title: title,
+                        images: [
+                            {src: imgUrl}
                         ]
                     }
                 };
@@ -119,12 +119,10 @@ module.exports = {
                     if (error) {
                         return res.status(400).send(error)
                     }
-                    console.log('FROM RESP BODY: ', resp.body);
                     console.log('FROM REQ BODY: ', req.body);
+                    console.log('FROM RESP BODY: ', resp.body);
                     res.status(200).send(resp)
                 });
-                console.log('FROM USER: ', user);
-                console.log('FROM REQ BODY 2: ', req.body);
 
             })
     }
