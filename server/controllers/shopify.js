@@ -60,21 +60,20 @@ module.exports = {
             method: "POST",
             body: req.body,
             json: true
-        })
-        .then(resp => {
+        }, function (err, resp, body) {
             ShopifyUser.findOne({
                 where: {
                     nonce: nonce
                 }
             })
+        })
+        .then(user => {
+            user.update({
+                token: resp.body.access_token
+            })
             .then(user => {
-                user.update({
-                    token: resp.body.access_token
-                })
-                .then(user => {
-                    console.log(user);
-                    res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
-                })
+                console.log(user);
+                res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
             })
         })
         .catch(error => res.status(400).send(error))
