@@ -17,6 +17,7 @@
     "jwt-simple": "^0.5.1",
     "morgan": "^1.8.1",
     "pg": "^6.1.5",
+    "request": "^2.81.0",
     "sequelize": "^3.30.2",
     "sequelize-cli": "^2.7.0"
   },

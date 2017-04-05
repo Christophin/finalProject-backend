@@ -1,6 +1,7 @@
 const UserController = require('../controllers/user');
 const ClipartController = require('../controllers/clipart');
 const TshirtController = require('../controllers/tshirt');
+const ShopifyController = require('../controllers/shopify');
 const middleware = require('../middleware');
 
 module.exports = (app) => {
@@ -20,5 +21,9 @@ module.exports = (app) => {
     app.post('/tshirt', middleware.authenticate, TshirtController.newTshirt);
     app.get('/tshirt', middleware.authenticate, TshirtController.getTshirts);
     app.put('/tshirt/:id', middleware.authenticate, TshirtController.updateTshirt);
-    app.get('/tshirttest', TshirtController.getTshirtTest)
+    app.get('/tshirttest', TshirtController.getTshirtTest);
+
+    app.post('/shopify/add', middleware.authenticate, ShopifyController.addShirt);
+    app.get('/shopify/link', ShopifyController.linkShopify);
+    app.get('/shopify/auth', ShopifyController.authShopify);
 };
