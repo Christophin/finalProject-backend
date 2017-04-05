@@ -54,7 +54,7 @@ module.exports = {
         let secret = appSecrets.customTeeSecret;
         let shop = req.query.shop;
         console.log(req.query);
-        let url = `http://${shop}/admin/oauth/access_token?client_id=${key}&client_secret=${secret}&code=${code}`;
+        let url = `https://${shop}/admin/oauth/access_token?client_id=${key}&client_secret=${secret}&code=${code}`;
         request({
             url: url,
             method: "POST",
