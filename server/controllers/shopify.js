@@ -94,8 +94,38 @@ module.exports = {
             }
         })
             .then(user => {
+                let shop = user.shop_name;
+                let url = `https://${shop}.myshopify.com/admin/products.json`;
+                let header = user.token;
+                let imgUrl = req.body.imageUrl;
+                let title = req.body.title;
+                let data = {
+                    "product": {
+                        "title": title,
+                        "images": [
+                            {"src": imgUrl}
+                        ]
+                    }
+                };
+                request({
+                    url: url,
+                    method: "POST",
+                    body: data,
+                    json: true,
+                    headers: {
+                        "X-Shopify-Access-Token": header
+                    }
+                }, function (error, resp, body) {
+                    if (error) {
+                        return res.status(400).send(error)
+                    }
+                    console.log(resp.body);
+                    console.log(req.body);
+                    res.status(200).send({ message: "we didn't die!" })
+                });
                 console.log(user);
                 console.log(req.body);
+
             })
     }
 };
