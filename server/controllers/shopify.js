@@ -119,12 +119,12 @@ module.exports = {
                     if (error) {
                         return res.status(400).send(error)
                     }
-                    console.log(resp.body);
-                    console.log(req.body);
+                    console.log('FROM RESP BODY: ', resp.body);
+                    console.log('FROM REQ BODY: ', req.body);
                     res.status(200).send(resp)
                 });
-                console.log(user);
-                console.log(req.body);
+                console.log('FROM USER: ', user);
+                console.log('FROM REQ BODY 2: ', req.body);
 
             })
     }
