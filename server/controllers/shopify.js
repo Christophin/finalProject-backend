@@ -98,8 +98,8 @@ module.exports = {
                 let shop = user.shop_name;
                 let url = `https://${shop}.myshopify.com/admin/products.json`;
                 let header = user.token;
-                let imgUrl = req.body.imageUrl;
-                let title = req.body.title;
+                let imgUrl = req.body.product.imageUrl;
+                let title = req.body.product.title;
                 let data = {
                     product: {
                         title: title,
