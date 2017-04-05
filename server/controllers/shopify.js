@@ -77,5 +77,14 @@ module.exports = {
             })
             .catch(error => res.status(400).send(error))
         })
+    },
+    getUser(req, res) {
+        ShopifyUser.findOne({
+            where:  {
+                user_id: req.user.id
+            }
+        })
+            .then(user => res.status(200).send(user))
+            .catch(error => res.status(400).send(error))
     }
 };
