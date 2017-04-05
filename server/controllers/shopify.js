@@ -20,9 +20,6 @@ module.exports = {
             if (error) {
                 return res.status(400).send(error)
             }
-            console.log(resp.body);
-            console.log(req.body);
-            //console.log(error);
             res.status(200).send({ message: "we didn't die!" })
         });
     },
@@ -53,7 +50,6 @@ module.exports = {
         let key = appSecrets.customTeeApiKey;
         let secret = appSecrets.customTeeSecret;
         let shop = req.query.shop;
-        console.log(req.query);
         let url = `https://${shop}/admin/oauth/access_token?client_id=${key}&client_secret=${secret}&code=${code}`;
         request({
             url: url,
@@ -71,7 +67,6 @@ module.exports = {
                     token: resp.body.access_token
                 })
                     .then(user => {
-                        console.log(user);
                         res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
                     })
             })
@@ -94,7 +89,6 @@ module.exports = {
             }
         })
             .then(user => {
-                console.log("after promise req", req);
                 let shop = user.shop_name;
                 let url = `https://${shop}.myshopify.com/admin/products.json`;
                 let header = user.token;
@@ -120,8 +114,6 @@ module.exports = {
                     if (error) {
                         return res.status(400).send(error)
                     }
-                    console.log('FROM REQ BODY: ', data);
-                    console.log('FROM RESP BODY: ', resp.body);
                     res.status(200).send(resp)
                 });
 
