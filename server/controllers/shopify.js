@@ -66,16 +66,16 @@ module.exports = {
                     nonce: nonce
                 }
             })
-        })
-        .then(user => {
-            user.update({
-                token: resp.body.access_token
-            })
             .then(user => {
-                console.log(user);
-                res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
+                user.update({
+                    token: resp.body.access_token
+                })
+                    .then(user => {
+                        console.log(user);
+                        res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
+                    })
             })
+            .catch(error => res.status(400).send(error))
         })
-        .catch(error => res.status(400).send(error))
     }
 };
