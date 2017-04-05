@@ -121,7 +121,7 @@ module.exports = {
                     }
                     console.log(resp.body);
                     console.log(req.body);
-                    res.status(200).send({ message: "we didn't die!" })
+                    res.status(200).send(resp)
                 });
                 console.log(user);
                 console.log(req.body);
