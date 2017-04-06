@@ -17,6 +17,14 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'tshirt_id',
           as: 'tsBackImages'
         });
+        Tshirt.hasMany(models.TsFrontText, {
+            foreignKey: 'tshirt_id',
+            as: 'tsFrontText'
+        });
+        Tshirt.hasMany(models.TsBackText, {
+            foreignKey: 'tshirt_id',
+            as: 'tsBackText'
+        });
       }
     }
   });
