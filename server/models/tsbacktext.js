@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     y_position: DataTypes.INTEGER,
     z_position: DataTypes.INTEGER,
     font: DataTypes.STRING,
-    font_size: DataTypes.INTEGER
+    font_size: DataTypes.INTEGER,
+    html_id: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

@@ -29,6 +29,9 @@ module.exports = {
       font_size: {
         type: Sequelize.INTEGER
       },
+      html_id: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
