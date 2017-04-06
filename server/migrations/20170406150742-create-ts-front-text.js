@@ -9,7 +9,6 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       tshirt_id: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       text: {
