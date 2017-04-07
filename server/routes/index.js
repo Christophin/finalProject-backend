@@ -24,7 +24,7 @@ module.exports = (app) => {
     app.get('/tshirttest', TshirtController.getTshirtTest);
 
     app.post('/shopify/add', middleware.authenticate, ShopifyController.addShirt);
-    app.get('/shopify/link', ShopifyController.linkShopify);
+    app.get('/shopify/link', middleware.authenticate, ShopifyController.linkShopify);
     app.get('/shopify/auth', ShopifyController.authShopify);
     app.get('/shopify/user', middleware.authenticate, ShopifyController.getUser);
     app.post('/shopify/tossShirt', middleware.authenticate, ShopifyController.tossShirt);

@@ -31,7 +31,7 @@ module.exports = {
         let nonce = bcrypt.hashSync(req.query.shop);
         ShopifyUser.findOrCreate({
             where: {
-                user_id: req.query.user_id
+                user_id: req.user.id
             },
             defaults: {
                 shop_name: req.query.shop,
@@ -63,6 +63,9 @@ module.exports = {
                 }
             })
             .then(user => {
+                if (!user) {
+                    res.send({ message: "oh fuck" })
+                }
                 user.update({
                     token: resp.body.access_token
                 })
