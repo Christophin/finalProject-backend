@@ -70,7 +70,10 @@ module.exports = {
                         res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
                     })
             })
-            .catch(error => res.status(400).send(error))
+            .catch(error => {
+                console.log(error);
+                res.status(400).send(error);
+            })
         })
     },
     getUser(req, res) {
