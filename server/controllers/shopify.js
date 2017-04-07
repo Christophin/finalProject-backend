@@ -30,9 +30,10 @@ module.exports = {
         let scope = 'read_products, write_products';
         let redirect = 'https://vast-thicket-97383.herokuapp.com/shopify/auth';
         let nonce = bcrypt.hashSync(req.query.shop);
+        let url = `https://${shop}.myshopify.com/admin/oauth/authorize?client_id=${apiKey}&scope=${scope}&redirect_uri=${redirect}&state=${nonce}`;
         ShopifyUser.findOrCreate({
             where: {
-                user_id: req.user.id
+                user_id: req.query.user_id
             },
             defaults: {
                 shop_name: req.query.shop,
@@ -41,7 +42,7 @@ module.exports = {
             }
         })
             .then(user => {
-                res.redirect(301, `https://${shop}.myshopify.com/admin/oauth/authorize?client_id=${apiKey}&scope=${scope}&redirect_uri=${redirect}&state=${nonce}`)
+                res.status(201).send({ url: url })
             })
             .catch(error => {
                 console.log(error);
