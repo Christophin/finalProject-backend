@@ -92,13 +92,15 @@ module.exports = {
                 let shop = user.shop_name;
                 let url = `https://${shop}.myshopify.com/admin/products.json`;
                 let header = user.token;
-                let imgUrl = req.body.product.imageUrl;
+                let frontImg = req.body.product.frontImg;
+                let backImg = req.body.product.backImg;
                 let title = req.body.product.title;
                 let data = {
                     product: {
                         title: title,
                         images: [
-                            {src: imgUrl}
+                            {src: frontImg},
+                            {src: backImg}
                         ]
                     }
                 };
