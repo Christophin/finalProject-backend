@@ -24,6 +24,7 @@ module.exports = {
         });
     },
     linkShopify (req, res)  {
+        console.log("confirming assumptions inside linkShopify");
         let shop = req.query.shop;
         let apiKey = appSecrets.customTeeApiKey;
         let scope = 'read_products, write_products';
@@ -42,7 +43,10 @@ module.exports = {
             .then(user => {
                 res.redirect(301, `https://${shop}.myshopify.com/admin/oauth/authorize?client_id=${apiKey}&scope=${scope}&redirect_uri=${redirect}&state=${nonce}`)
             })
-            .catch(error => res.status(400).send(error))
+            .catch(error => {
+                console.log(error);
+                res.status(400).send(error);
+            })
     },
     authShopify (req, res)  {
         let nonce = req.query.state;
@@ -75,7 +79,7 @@ module.exports = {
             })
             .catch(error => {
                 console.log(error);
-                res.status(400).send(error);
+                res.status(400).send(JSON.stringify(error));
             })
         })
     },
