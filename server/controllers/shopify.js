@@ -33,7 +33,7 @@ module.exports = {
         let url = `https://${shop}.myshopify.com/admin/oauth/authorize?client_id=${apiKey}&scope=${scope}&redirect_uri=${redirect}&state=${nonce}`;
         ShopifyUser.findOrCreate({
             where: {
-                user_id: req.query.user_id
+                user_id: req.user.id
             },
             defaults: {
                 shop_name: req.query.shop,
