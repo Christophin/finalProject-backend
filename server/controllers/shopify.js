@@ -114,7 +114,9 @@ module.exports = {
                         title: title,
                         vendor: vendor,
                         product_type: product_type,
-                        price: Number(price),
+                        varients: [
+                            {price: Number(price)}
+                        ],
                         images: [
                             {src: frontImg},
                             {src: backImg}
