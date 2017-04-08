@@ -106,9 +106,15 @@ module.exports = {
                 let frontImg = req.body.product.frontImg;
                 let backImg = req.body.product.backImg;
                 let title = req.body.product.title;
+                let vendor = req.body.product.store.vendor;
+                let product_type = req.body.product.store.product_type;
+                let price = req.body.product.store.price;
                 let data = {
                     product: {
                         title: title,
+                        vendor: vendor,
+                        product_type: product_type,
+                        price: price,
                         images: [
                             {src: frontImg},
                             {src: backImg}
