@@ -112,20 +112,6 @@ module.exports = {
     },
     destroyTshirt(req, res) {
         Tshirt.destroy({
-            include:    [
-                { model: TsFrontImage,
-                    as: 'tsFrontImages'
-                }, {
-                    model: TsBackImage,
-                    as: 'tsBackImages'
-                }, {
-                    model: TsFrontText,
-                    as: 'tsFrontText'
-                }, {
-                    model: TsBackText,
-                    as: 'tsBackText'
-                }
-            ],
             where:  {
                 id: req.params.id
             }

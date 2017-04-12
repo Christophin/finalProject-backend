@@ -23,7 +23,7 @@ module.exports = (app) => {
     app.get('/tshirt', middleware.authenticate, TshirtController.getTshirts);
     app.put('/tshirt/:id', middleware.authenticate, TshirtController.updateTshirt);
     app.get('/tshirttest', TshirtController.getTshirtTest);
-    app.delete('/tshirt/:id', TshirtController.destroyTshirt);
+    app.delete('/tshirt/:id', middleware.authenticate, TshirtController.destroyTshirt);
 
     app.post('/shopify/add', middleware.authenticate, ShopifyController.addShirt);
     app.get('/shopify/link', middleware.authenticate, ShopifyController.linkShopify);
