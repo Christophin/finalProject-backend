@@ -112,11 +112,28 @@ module.exports = {
     },
     destroyTshirt(req, res) {
         Tshirt.destroy({
+            include:    [
+                { model: TsFrontImage,
+                    as: 'tsFrontImages'
+                }, {
+                    model: TsBackImage,
+                    as: 'tsBackImages'
+                }, {
+                    model: TsFrontText,
+                    as: 'tsFrontText'
+                }, {
+                    model: TsBackText,
+                    as: 'tsBackText'
+                }
+            ],
             where:  {
                 id: req.params.id
             }
         })
             .then(rows => res.status(204).send(rows))
-            .catch(error => res.status(400).send(error))
+            .catch(error => {
+                console.log(error);
+                res.status(400).send(error);
+            })
     }
 };
