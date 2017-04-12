@@ -130,7 +130,7 @@ module.exports = {
                 id: req.params.id
             }
         })
-            .then(rows => res.status(204).send({ deletedCount: rows }))
+            .then(rows => res.status(204).send())
             .catch(error => {
                 console.log(error);
                 res.status(400).send(error);

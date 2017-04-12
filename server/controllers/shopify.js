@@ -69,13 +69,13 @@ module.exports = {
             })
             .then(user => {
                 if (!user) {
-                    res.send({ message: "oh fuck" })
+                    return res.send({ message: "oh fuck" })
                 }
                 user.update({
                     token: resp.body.access_token
                 })
                     .then(user => {
-                        res.redirect(301, `http://localhost:8080/#!/user/${user.id}`)
+                        res.redirect(301, `http://tiy-houseofkal-el-tshirt-frontend.surge.sh/#!/user/${user.id}`)
                     })
             })
             .catch(error => {
