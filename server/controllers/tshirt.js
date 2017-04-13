@@ -106,8 +106,14 @@ module.exports = {
                     ],
                     fields: ['name','color','ts_front_url','ts_back_url','tsFrontImages','tsBackImages','tsFrontText','tsBackText']
                 })
-                    .then(tshirt => res.status(201).send(tshirt))
-                    .catch(error => res.status(400).send(error));
+                    .then(tshirt => {
+                        console.log(tshirt.validate());
+                        res.status(201).send(tshirt);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        res.status(400).send(error);
+                    });
             })
     },
     destroyTshirt(req, res) {
