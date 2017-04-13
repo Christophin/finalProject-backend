@@ -72,8 +72,8 @@ module.exports = {
 
     },
     updateTshirt (req, res) {
-        Tshirt.findById(req.params.id, {
-            include: [
+        Tshirt.update(req.body, {
+            include:    [
                 { model: TsFrontImage,
                     as: 'tsFrontImages'
                 }, {
@@ -86,35 +86,20 @@ module.exports = {
                     model: TsBackText,
                     as: 'tsBackText'
                 }
-            ]
+            ],
+            fields: ['name','color','ts_front_url','ts_back_url','tsFrontImages','tsBackImages','tsFrontText','tsBackText'],
+            where: {
+                id: req.params.id
+            }
         })
             .then(tshirt => {
-                tshirt.update(req.body, {
-                    include:    [
-                        { model: TsFrontImage,
-                            as: 'tsFrontImages'
-                        }, {
-                            model: TsBackImage,
-                            as: 'tsBackImages'
-                        }, {
-                            model: TsFrontText,
-                            as: 'tsFrontText'
-                        }, {
-                            model: TsBackText,
-                            as: 'tsBackText'
-                        }
-                    ],
-                    fields: ['name','color','ts_front_url','ts_back_url','tsFrontImages','tsBackImages','tsFrontText','tsBackText']
-                })
-                    .then(tshirt => {
-                        console.log(tshirt.validate());
-                        res.status(201).send(tshirt);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        res.status(400).send(error);
-                    });
+                console.log(tshirt.validate());
+                res.status(201).send(tshirt);
             })
+            .catch(error => {
+                console.log(error);
+                res.status(400).send(error);
+            });
     },
     destroyTshirt(req, res) {
         Tshirt.destroy({
