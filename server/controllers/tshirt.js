@@ -93,7 +93,7 @@ module.exports = {
             }
         })
             .then(tshirt => {
-                console.log(tshirt);
+                console.log(req.body);
                 res.status(201).send(tshirt);
             })
             .catch(error => {
