@@ -19,5 +19,14 @@ module.exports = {
         })
             .then(clipart => res.status(201).send(clipart))
             .catch(error => res.status(400).send(error));
+    },
+    deleteClipart(req, res) {
+        Clipart.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(rows => res.status(204).send())
+            .catch(error => res.status(400).send(error))
     }
 };
