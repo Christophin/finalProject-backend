@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     user_id: DataTypes.INTEGER,
     color: DataTypes.STRING,
     ts_front_url: DataTypes.STRING,
-    ts_back_url: DataTypes.STRING
+    ts_back_url: DataTypes.STRING,
+    preview_url: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
