@@ -69,7 +69,7 @@ module.exports = {
             })
             .then(user => {
                 if (!user) {
-                    return res.send({ message: "oh fuck" })
+                    return res.send({ message: "User not found" })
                 }
                 user.update({
                     token: resp.body.access_token
